@@ -20,8 +20,10 @@ POST "/set/address"
 ]
 }
 
+Server Generates Tree on startup if addresses are present already.
+
 GET "/generate"
--Returns the merkletree root. This route creates the merkletree from addresses.json and stores it in server memory (not storage to prevent access). Use this only once when you are done adding addresses in whitelist.
+-Returns the merkletree root. This route creates the merkletree from addresses.json and stores it in server memory. Use this only once when you are done adding addresses in whitelist.
 
 GET "/getproof/walletaddress"
 -Returns Wallet's Merkleproof if it valid and whitelisted address with status true flag, returns status false and error true flag if address is not whitelisted.

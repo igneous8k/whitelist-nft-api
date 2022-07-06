@@ -24,6 +24,23 @@ type Error = {
 };
 let merkleTreeStored: MerkleTree;
 
+(() => {
+  try {
+    let file = editJsonFile(`${__dirname}/addresses.json`);
+    const addresses = file.get("whitelist");
+    if (!addresses) return;
+    if (addresses.length === 0) return;
+
+    const leafNodes = addresses.map((addr: string) => keccak256(addr));
+    const merkleTree = new MerkleTree(leafNodes, keccak256, {
+      sortPairs: true,
+    });
+    merkleTreeStored = merkleTree;
+    return;
+  } catch (e) {
+    console.log(e);
+  }
+})();
 app.get("/", async (req: Request, res: Response) => {
   res.status(200).json({
     error: false,
