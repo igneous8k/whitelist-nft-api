@@ -1,3 +1,6 @@
+<h1>EASY TO USE MERKLETREE UTILITIES FOR WHITELISTED NFT MINTING </h1>
+
+
 API to get a merkletree root and proof of whitelisted wallet addresses for whitelist Minting.
 
 GET "/addresses"
